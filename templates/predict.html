@@ -1,0 +1,192 @@
+{% extends 'header.html'%}
+
+{% block head %}
+
+
+<title>Healthcare Heart Stroke Risk Prediction</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6 col-sm-12 col-xs-6 col-lg-6">
+        <form action="/predict" method="post">
+            <legend>Heart Stroke Prediction</legend>
+            <div class="mb-3">
+                <label class="form-label">Patient's Gender</label>
+                <select class="form-control" name="gender" placeholder="Enter Patient's Gender"
+                    required>
+                    <option class="placeholder" selected disabled value="">Select your Gender</option>
+                    <option value="Male">
+                        Male
+                    </option>
+                    <option value="Female">
+                        Female
+                    </option>
+                    <option value="Other">
+                        Other
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Patient's Age</label>
+                <input class="form-control" type="number" name="age"
+                    placeholder="Enter Patient's age" min='0' max='100'/>
+            </div>    
+            <div class="mb-3">
+                <label class="form-label">Patient's HyperTension [Yes = 1 : No = 0] </label>
+                <select class="form-control" name="hypertension" placeholder="Patient has Hyper Tension?"
+                    required>
+                    <option class="placeholder" selected disabled value="">Hyper Tension</option>
+                    <option value=0>
+                        Yes
+                    </option>
+                    <option value=1>
+                        No
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Patient's Heart Disease [Yes = 1 : No = 0] </label>
+                <select class="form-control" name="heart_disease" placeholder="Patient has Heart Disease?"
+                    required>
+                    <option class="placeholder" selected disabled value="">Heart Disease</option>
+                    <option value=0>
+                        Yes
+                    </option>
+                    <option value=1>
+                        No
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Patient Ever Married?</label>
+                <select class="form-control" name="ever_married" placeholder="is Patient Married?"
+                    required>
+                    <option class="placeholder" selected disabled value="">Are you Married?</option>
+                    <option value=Yes>
+                        Yes
+                    </option>
+                    <option value=No>
+                        No
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Patient's Work Type</label>
+                <select class="form-control" name="work_type" placeholder="Enter Patient's Work Type"
+                    required>
+                    <option class="placeholder" selected disabled value="">Work Type</option>
+                    <option value="children">
+                        Children
+                    </option>
+                    <option value="Govt_job">
+                        Government Job
+                    </option>
+                    <option value="Never_worked">
+                        Never Worked
+                    </option>
+                    <option value="Private">
+                        Private
+                    </option>
+                    <option value="Self-employed">
+                        Self-employed
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Residence Type</label>
+                <select class="form-control" name="Residence_type" placeholder="Enter Patient's Residence type"
+                    required>
+                    <option class="placeholder" selected disabled value="">Select Residence Type</option>
+                    <option value="Urban">
+                        Urban
+                    </option>
+                    <option value="Rural">
+                        Rural
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Smoking Status</label>
+                <select class="form-control" name="smoking_status" placeholder="Enter you Smoking Status"
+                    required>
+                    <option class="placeholder" selected disabled value="">Select your Smoking Status</option>
+                    <option value="formerly smoked">
+                        Formerly smoked
+                    </option>
+                    <option value="never smoked">
+                        Never smoked
+                    </option>
+                    <option value="smokes">
+                        Smokes
+                    </option>
+                    <option value="Unknown">
+                        Unknown
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Average Glucose Level [50-300]</label>
+                <input class="form-control" type="number" name="avg_glucose_level"
+                    placeholder="Enter Patient's Avg Glucose Level" min='50' max='300'/>
+            </div>            
+            <div class="mb-3">
+                <label class="form-label">Body Mass Index [10-100]</label>
+                <input class="form-control" type="number" name="bmi"
+                    placeholder="Enter Patient's BMI" min='10' max='100'/>
+            </div>    
+            <div class="mb-3">
+                <input class="btn btn-primary" type="submit" value="Predict your Maths Score" required />
+            </div>
+
+        </form>
+    </div>
+
+    <div class="col-md-6 col-sm-12 col-xs-6 col-lg-6">
+        <div class="card">
+            <div class="card-header">
+              Prediction
+            </div>
+            <div class="card-body">
+        {% if context['heart_stroke_data'] is not none %}
+        <table class="table table-striped">
+            <caption>Student Maths Score Prediction </caption>
+            <tr>
+                <th>Input Feature</th>
+                <th>Feature Value</th>
+
+            </tr>
+            {% for column,value in context['heart_stroke_data'].items() %}
+
+
+            <tr>
+                <td>{{column}}</td>
+                <td>{{value[0]}}</td>
+            </tr>
+
+            {% endfor %}
+            <tr>
+
+                <td>Predicted Class </td>
+                <td>
+                    {{ context['stroke'] }}
+                </td>
+                <td>
+                    {{context['proba']}}
+                </td>
+            </tr>
+        </table>
+
+        {% else %}
+       
+              <h5 class="card-title">Submit Form</h5>
+              <p class="card-text">Kindly provide necessary information to Predict Heart Stroke</p>
+            
+        {% endif %}
+        Go to <a href="/" class="btn btn-primary">Home</a>
+    </div>
+</div>
+    </div>
+
+    {% endblock %}

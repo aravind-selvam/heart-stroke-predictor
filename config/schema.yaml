@@ -1,0 +1,29 @@
+FileName: "healthcare-dataset-stroke-data.csv"
+NumberofColumns: 11
+ColumnNames:
+  gender: category
+  age: int
+  hypertension: int
+  heart_disease: category
+  ever_married: category
+  work_type: category
+  Residence_type: category
+  avg_glucose_level: int
+  bmi: float
+  smoking_status: category
+  stroke: int
+
+Numerical_columns:
+  - age
+
+Categorical_columns:
+  - ever_married
+  - work_type
+  - Residence_type
+  - smoking_status
+
+Transformation_columns:
+  - avg_glucose_level
+  - bmi
+
+target_column: stroke

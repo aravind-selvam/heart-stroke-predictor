@@ -1,0 +1,13 @@
+Flask
+gunicorn
+Jinja2
+Werkzeug
+numpy
+pandas
+sklearn
+dnspython
+pymongo
+catboost
+PyYAML
+dill
+-e .

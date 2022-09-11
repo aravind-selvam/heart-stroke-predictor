@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/778c911bcf.js" crossorigin="anonymous"></script>
+    <style>
+   
+        .col-md-2 {
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+    </style>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    {% block head %}{% endblock %}
+</head>
+<style>
+
+    table{
+        -webkit-box-shadow: 0px 7px 16px -2px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 7px 16px -2px rgba(0,0,0,0.75);
+box-shadow: 0px 7px 16px -2px rgba(0,0,0,0.75);
+width:100%;
+overflow:scroll;
+table-layout: fixed;
+    width: 100%; 
+ 
+    overflow:scroll;
+    min-height: 400px; /* table height here */
+  border-collapse: collapse;
+    }
+    
+    th,td {
+        text-align:left;
+    word-wrap: break-word;
+}
+
+
+</style>
+<body style="background-color: #f1f1f1;">
+
+
+
+    <!---
+    
+    navbar code
+    
+    
+    
+    -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="/">Healthcare Heart Stroke Predictor</a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if 'log' in request.path %} active {% endif %}" href="/logs">View Logs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if 'artifact' in request.path %} active {% endif %}" href="/artifact">View Artifacts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if 'saved_models' in request.path %} active {% endif %}" href="/saved_models">View Trained Model</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if 'predict' in request.path %} active {% endif %}" href="/predict">Predict Heart Stroke Risk</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if 'predict' in request.path %} active {% endif %}" href="/view_experiment_hist">Experiment History</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+   
+
+
+    <div class="row">
+       
+        <div class="col-md-4 col-sm-12 col-lg-4">
+    
+
+            <ul class=" list-group " style="    margin-left: 5%;margin-top: 5%;">
+                <a href="/logs" class="list-group-item list-group-item-action {% if 'log' in request.path %} active {% endif %}" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">View Logs</h5>
+                      <small>Log Files</small>
+                    </div>
+                    <p class="mb-1">All model training log file can be downloaded.</p>
+                    <small></small>
+                  </a>
+                  <a href="/artifact" class="list-group-item list-group-item-action {% if 'artifact' in request.path %} active {% endif %}" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">View Artifacts</h5>
+                      <small>Artifact Files</small>
+                    </div>
+                    <p class="mb-1">All model artifacts file can be downloaded.</p>
+                    <small></small>
+                  </a>
+                  <a href="/saved_models" class="list-group-item list-group-item-action {% if 'saved_models' in request.path %} active {% endif %}" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">View Trained Model</h5>
+                      <small>Trained Models</small>
+                    </div>
+                    <p class="mb-1">All model file can be downloaded.</p>
+                    <small></small>
+                  </a>
+                  <a href="/predict" class="list-group-item list-group-item-action {% if 'predict' in request.path %} active {% endif %}" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Predict Heart Stroke Risk</h5>
+                      <small>It predicts if the patient gets heart stroke or not</small>
+                    </div>
+                    <p class="mb-1">Submit the form to get Prediction of Heart Stroke risk</p>
+                    <small></small>
+                  </a>
+                  <a href="/train" class="list-group-item list-group-item-action {% if 'train' in request.path %} active {% endif %}" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="card text-white bg-danger mb-3">Initiate Training Pipeline </h5>
+                      <small>Click only for Training</small>
+                    </div>
+                    <p class="mb-1">Model training can be initiated using his section.</p>
+                    <small></small>
+                  </a>
+                  <a href="/update_model_config" class="list-group-item list-group-item-action {% if 'update_model_config' in request.path %} active {% endif %}" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Update Model Config</h5>
+                      <small>Change model configuration</small>
+                    </div>
+                    <p class="mb-1">Can modify model configuration</p>
+                    <small></small>
+                  </a>
+                
+            </ul>
+
+        </div>
+
+        <div class="col-md-8 col-sm-12 col-lg-8" style="margin-top:20px;"> 
+            {% block content %}
+
+
+            {% endblock %}
+
+        </div>
+
+    </div>
+
+    <!-- footer goes here-->
+
+    <footer class="text-center text-white " style="background-color: #d4d2d2;">
+
+        <!-- Copyright -->
+        <div class="text-center text-light p-3" style="background-color: #0275d8;">
+            © 2022 Copyright:
+            <a class="text-light" href="https://ineuron.ai/">iNeuron Intelligence Pvt Limited</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
