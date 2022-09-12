@@ -13,18 +13,15 @@
 {% block content %}
 
 <div class="container">
-   
       <div class="row" style="width: 100%; height: 60%;">
         <div class="col-xs-12">
          
           
-            <img src="{{ url_for('static', filename='/images/img.jpg') }}" style="width: 99%; height: 90%;">
+            <img src="{{ url_for('static', filename='/images/img.png') }}" style="width: 99%; height: 90%;">
           
         </div>
-      
     </div>
     <div class="row">
-    
         <div class="col-md-4 col-lg-4 col-sm-12">
         <div class="card">
             <div class="card-header">
@@ -39,7 +36,6 @@
         </div>
         </div>
         
-        
         <div class="col-md-4 col-lg-4 col-sm-12" style="margin-bottom:20px;">
             <div class="card">
                 <div class="card-header">
@@ -53,21 +49,17 @@
                 </div>
             </div>
             </div>
-        
-        
-        
-        
                 
             <div class="col-md-4 col-lg-4 col-sm-12"  style="margin-bottom:20px;">
                 <div class="card">
                     <div class="card-header">
-                      Estimate Maths Score
+                      Predict
                     </div>
                     <div class="card-body">
                 
                         <h5 class="card-title">Access Stroke Predictor</h5>
                         <p class="card-text"> Submit the form to get Prediction of Heart Risk.</p>
-                        <a class="btn btn-primary" href="/predict">Get Estimated Price</a>
+                        <a class="btn btn-primary" href="/predict">Get Prediction</a>
                     </div>
                 </div>
                 </div>
