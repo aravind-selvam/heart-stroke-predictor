@@ -3,12 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 catboost_info/
-
-
-
+heart_stroke\artifact
+logs/
 # C extensions
 *.so
-sharing/artifact
 
 # Distribution / packaging
 .Python
