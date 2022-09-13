@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 saved_models/*
-heart_stroke/artifact/*
+heart_stroke/artifact/
 logs/
 # C extensions
 *.so
