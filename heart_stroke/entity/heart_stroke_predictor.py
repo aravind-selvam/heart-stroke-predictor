@@ -34,7 +34,7 @@ class HeartStrokeData:
             self.smoking_status = smoking_status
 
         except Exception as e:
-            raise InsuranceException(e, sys) from e
+            raise HeartStrokeException(e, sys) from e
 
     def get_heart_stroke_input_data_frame(self):
 
