@@ -1,6 +1,8 @@
 # Heart Stroke Predictor
 
-#### Language and Libraries
+### [Application deployment Link](https://heart-stroke-predictor-ineuron.herokuapp.com/)
+
+### Language and Libraries
 
 <p>
 <a><img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=darkgreen" alt="python"/></a>
