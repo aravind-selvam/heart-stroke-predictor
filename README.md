@@ -120,6 +120,6 @@ From these above models after hyperparameter optimization we selected Top two mo
 - Can be implemented in hospital website to predict the chance of heart stroke for the patients.
 - As heart diseases and strokes are increasing rapidly across the world and causing deaths, it becomes necessary to develop an efficient system that would predict the heart stroke effectively before hand so that immediate medical attention can be given. In the proposed system, the most effective algorithm for stroke prediction was obtained after comparative analysis of the accuracy scores of various models.
 
-=====================================================================================
+=============================================================================
 
 
